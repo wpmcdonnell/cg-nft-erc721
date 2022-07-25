@@ -29,8 +29,6 @@ contract CG721 is ERC721Enumerable, Ownable {
 
     function mint() public returns(uint256) {
       require(maxSupply > tokenIds.current(), "All tokens has been minted!");
-
-      // Need a send
       tokenIds.increment();
       uint256 currentTokenId = tokenIds.current();
       _safeMint(msg.sender, currentTokenId);
