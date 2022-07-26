@@ -41,7 +41,7 @@ contract CG721 is ERC721Enumerable, Ownable {
 
 
     /** @dev Allows owner to mint a single nft to their own wallet,
-      * requires the supply to be greater than or equal to 20,
+      * requires the supply to be greater than or equal to 200,
       * _safemint() is used to mint to msg.sender which is owner, and the current tokenID
       * @return currentTokenId The token ID
       */
