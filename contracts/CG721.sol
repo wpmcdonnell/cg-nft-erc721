@@ -3,7 +3,6 @@ pragma solidity ^0.8.15;
 
 /** @dev Imports the OpenZeppelin library
   */
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -29,12 +28,11 @@ contract CG721 is ERC721Enumerable, Ownable {
 
     /** @dev Allows owner to mint a single nft to their own wallet
       */
-    function mint() external onlyOwner returns(uint256) {
-      require(maxSupply >= tokenIds.current(), "All tokens has been minted!");
+    function mintCG721(address _to) external onlyOwner {
+      require(maxSupply > tokenIds.current(), "All tokens has been minted!");
       tokenIds.increment();
-      uint256 currentTokenId = tokenIds.current();
-      _safeMint(msg.sender, currentTokenId);
-      return currentTokenId;
+      uint256 _tokenId = tokenIds.current();
+      _safeMint(_to, _tokenId, "");
     }
 
     /** @dev Allows a function call to view the metadata aka the tokenURI
