@@ -16,7 +16,7 @@ contract CG721 is ERC721Enumerable, Ownable {
   Counters.Counter private tokenIds;
   uint256 public maxSupply = 20;
   string public baseExtension = ".json";
-  string baseURI = 'https://gateway.pinata.cloud/ipfs/QmTd3uKQp42cQ4dt2ztJNJVgJSnjQ36iYzKzwhuj9S1vD2/';
+  string baseURI = 'https://gateway.pinata.cloud/ipfs/QmTf1YUgTBnYEKk9Zd5omHfGALi7gXpeugzcx8yTnYuS1j/';
 
     constructor() ERC721("CG NFTs", "CG-NFT") {
     }
