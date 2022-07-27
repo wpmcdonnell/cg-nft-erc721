@@ -13,11 +13,11 @@ contract CG721 is ERC721Enumerable, Ownable {
   using Strings for uint256;
   using Counters for Counters.Counter;
   Counters.Counter private tokenIds;
-  uint256 public maxSupply = 20;
+  uint256 public maxSupply = 200;
   string public baseExtension = ".json";
   string baseURI = 'https://gateway.pinata.cloud/ipfs/QmTf1YUgTBnYEKk9Zd5omHfGALi7gXpeugzcx8yTnYuS1j/';
 
-    constructor() ERC721("CG NFTs", "CG-NFT") {
+    constructor() ERC721("CG NFT Colors", "CGCLR") {
     }
 
     /** @dev Internal function used by TokenURI to return the baseURI
@@ -27,12 +27,13 @@ contract CG721 is ERC721Enumerable, Ownable {
   }
 
     /** @dev Allows owner to mint a single nft to their own wallet
+      * @param _to Address for reciever 
       */
-    function mintCG721(address _to) external onlyOwner {
-      require(maxSupply > tokenIds.current(), "All tokens has been minted!");
-      tokenIds.increment();
+    function mint(address _to) external onlyOwner {
+      require(tokenIds.current() < maxSupply, "All tokens has been minted!");
       uint256 _tokenId = tokenIds.current();
       _safeMint(_to, _tokenId, "");
+      tokenIds.increment();
     }
 
     /** @dev Allows a function call to view the metadata aka the tokenURI
